@@ -10,6 +10,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 import java.util.function.Function;
 import java.util.stream.Stream;
 
+/** @see ConversionServiceImpl#convertNumber(NumberRequest)  */
 class ConversionServiceImplConvertTest {
 
     private final ConversionServiceImpl subject = new ConversionServiceImpl();
@@ -36,13 +37,13 @@ class ConversionServiceImplConvertTest {
     private static Stream<Arguments> converterShouldTranslateIntegerIntoString() {
         return Stream.of(
                 Arguments.of("0", "zero"),
-                Arguments.of("245", "two hundred and forty-five"),
-                Arguments.of("1245", "one thousand two hundred and forty-five"),
-                Arguments.of("10245", "ten thousand two hundred and forty-five"),
+                Arguments.of("245", "two hundred forty-five"),
+                Arguments.of("1245", "one thousand two hundred forty-five"),
+                Arguments.of("10245", "ten thousand two hundred forty-five"),
                 Arguments.of("75", "seventy-five"),
                 Arguments.of("75000", "seventy-five thousand"),
                 Arguments.of("7000000", "seven million"),
-                Arguments.of("7483647", "seven million four hundred and eighty-three thousand six hundred and forty-seven")
+                Arguments.of("7483647", "seven million four hundred eighty-three thousand six hundred forty-seven")
         );
     }
 }

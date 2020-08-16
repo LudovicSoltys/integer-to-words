@@ -28,8 +28,6 @@ class EnglishThreeDigitsFunctionApplyTest {
     }
 
     /**
-     * @link https://en.wikipedia.org/wiki/English_numerals
-     *
      * @return a sample of data
      */
     private static Stream<Arguments> converterShouldTranslateIntegerIntoString() {
@@ -39,8 +37,8 @@ class EnglishThreeDigitsFunctionApplyTest {
                 Arguments.of("50", "fifty"),
                 Arguments.of("75", "seventy-five"),
                 Arguments.of("100", "one hundred"),
-                Arguments.of("112", "one hundred and twelve"),
-                Arguments.of("245", "two hundred and forty-five")
+                Arguments.of("112", "one hundred twelve"),
+                Arguments.of("245", "two hundred forty-five")
         );
     }
 }

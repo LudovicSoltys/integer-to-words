@@ -19,7 +19,7 @@ class IntegerToWordsConversionRestServiceConvertTest {
     private MockMvc mockMvc;
 
     @Test
-    public void shouldDoSomething() throws Exception {
+    public void shouldReturnInputTranslatedIntoWords() throws Exception {
 
         // given
         Integer input = 245;
@@ -31,7 +31,7 @@ class IntegerToWordsConversionRestServiceConvertTest {
         result
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().contentType("application/json"))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.value").value("two hundred and forty-five"));
+                .andExpect(MockMvcResultMatchers.jsonPath("$.value").value("two hundred forty-five"));
 
     }
 

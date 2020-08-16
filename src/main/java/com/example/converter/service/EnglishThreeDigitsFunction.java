@@ -78,7 +78,7 @@ public class EnglishThreeDigitsFunction implements Function<ThreeDigits, String>
         }
 
         if (number.getHundred() != 0) {
-            result = zeroToNine.get(number.getHundred()) + " hundred" + (result.isEmpty() ? "" : " and " + result);
+            result = zeroToNine.get(number.getHundred()) + " hundred" + (result.isEmpty() ? "" : " " + result);
         }
 
         return result;

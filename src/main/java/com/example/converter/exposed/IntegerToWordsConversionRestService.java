@@ -23,6 +23,4 @@ public class IntegerToWordsConversionRestService {
 
         return service.convertNumber(new NumberRequest(value));
     }
-
-
 }
