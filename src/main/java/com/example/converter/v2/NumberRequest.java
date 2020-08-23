@@ -7,9 +7,11 @@ import java.util.regex.Pattern;
  */
 class NumberRequest {
 
-    private final String value;
+    private final String absoluteValue;
 
-    private static final Pattern NUMBER_ONLY_PATTERN = Pattern.compile("^\\d+$");
+    private final boolean isLowerThanZero;
+
+    private static final Pattern NUMBER_ONLY_PATTERN = Pattern.compile("^-?\\d+$");
 
     private static final Pattern ZERO_PATTERN = Pattern.compile("^0+$");
 
@@ -23,19 +25,29 @@ class NumberRequest {
             throw new IllegalArgumentException("Expect numbers only. Actual value is " + value);
         }
 
-        this.value = value;
+        isLowerThanZero = value.startsWith("-");
+        absoluteValue = isLowerThanZero ? value.substring(1) : value;
+
+        if (absoluteValue.length() > 27) {
+            throw new IllegalArgumentException("Expect less than 27 digits. Actual value has " + absoluteValue.length() + " elements");
+        }
+
     }
 
     public boolean isZero() {
 
-        return ZERO_PATTERN.matcher(value).find();
+        return ZERO_PATTERN.matcher(absoluteValue).find();
+    }
+
+    public boolean isLowerThanZero() {
+        return isLowerThanZero;
     }
 
     public int size() {
-        return value.length();
+        return absoluteValue.length();
     }
 
-    public String getValue() {
-        return value;
+    public String getAbsoluteValue() {
+        return absoluteValue;
     }
 }

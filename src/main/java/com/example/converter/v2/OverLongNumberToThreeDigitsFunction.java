@@ -21,7 +21,7 @@ public class OverLongNumberToThreeDigitsFunction implements Function<NumberReque
 
         int size = input.size();
 
-        String value = input.getValue().substring(Math.max(size - endIndex - 3, 0), Math.max(size - endIndex, 0));
+        String value = input.getAbsoluteValue().substring(Math.max(size - endIndex - 3, 0), Math.max(size - endIndex, 0));
 
         if (value.isEmpty()) {
             return ThreeDigits.zero();

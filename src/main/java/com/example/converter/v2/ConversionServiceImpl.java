@@ -5,10 +5,10 @@ package com.example.converter.v2;
  */
 public class ConversionServiceImpl implements ConversionService {
 
+    private final TranslateStrategy strategy = new EnglishLongScaleTranslateStrategyImpl();
+
     @Override
     public WordResponse convertNumber(NumberRequest number) {
-
-        TranslateStrategy strategy = new EnglishLongScaleTranslateStrategyImpl();
 
         return strategy.convertNumber(number);
     }

@@ -12,24 +12,26 @@ import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(IntegerToWordsConversionRestService.class)
-class IntegerToWordsConversionRestServiceConvertFailsTest {
+@WebMvcTest(LongToWordsConversionRestService.class)
+class LongToWordsConversionRestServiceConvertTest {
 
     @Autowired
     private MockMvc mockMvc;
 
     @Test
-    public void shouldReturnHttpErrorWhenTranslationFails() throws Exception {
+    public void shouldReturnInputTranslatedIntoWords() throws Exception {
 
         // given
-        Integer input = -245;
+        Integer input = 245;
 
         // when
         ResultActions result = when(input);
 
         // then
         result
-                .andExpect(MockMvcResultMatchers.status().isBadRequest());
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.content().contentType("application/json"))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.value").value("two hundred forty-five"));
 
     }
 

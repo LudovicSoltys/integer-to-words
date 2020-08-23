@@ -69,6 +69,7 @@ enum EnglishLongScaleMetric {
         if (number.isZero()) {
             return "";
         } else {
+
             return translator.apply(number);
         }
     }

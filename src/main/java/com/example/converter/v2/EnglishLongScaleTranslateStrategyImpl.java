@@ -18,6 +18,10 @@ class EnglishLongScaleTranslateStrategyImpl implements TranslateStrategy {
 
         StringBuilder output = new StringBuilder();
 
+        if (number.isLowerThanZero()) {
+            output.append("minus ");
+        }
+
         for (EnglishLongScaleMetric entry : converters) {
             output.append(entry.translate(number));
         }

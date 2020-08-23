@@ -37,11 +37,11 @@ class OverLongNumberToThreeDigitsFunctionApplyTest {
      */
     private static Stream<Arguments> converterShouldTranslateIntegerIntoString() {
         return Stream.of(
-                Arguments.of(         "9223372036854775807", 18, new ThreeDigits(9)),
-                Arguments.of(         "9223372036854775807", 21, new ThreeDigits(0)),
-                Arguments.of(        "92233720368547758070", 18, new ThreeDigits(92)),
-                Arguments.of(       "922337203685477580700", 18, new ThreeDigits(922)),
-                Arguments.of("9223372036854775807000000000", 18, new ThreeDigits(36))
+                Arguments.of(        "9223372036854775807", 18, new ThreeDigits(9)),
+                Arguments.of(        "9223372036854775807", 21, new ThreeDigits(0)),
+                Arguments.of(       "92233720368547758070", 18, new ThreeDigits(92)),
+                Arguments.of(      "922337203685477580700", 18, new ThreeDigits(922)),
+                Arguments.of("223372036854775807000000000", 18, new ThreeDigits(36))
             );
     }
 }

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/api/v2")
-public class IntegerToWordsConversionRestService {
+public class LongToWordsConversionRestService {
 
     private final ConversionService service = new ConversionServiceImpl();
 

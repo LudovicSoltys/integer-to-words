@@ -12,8 +12,8 @@ import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(IntegerToWordsConversionRestService.class)
-class IntegerToWordsConversionRestServiceConvertExtraLongNumberTest {
+@WebMvcTest(LongToWordsConversionRestService.class)
+class LongToWordsConversionRestServiceConvertExtraLongNumberTest {
 
     @Autowired
     private MockMvc mockMvc;

@@ -28,11 +28,11 @@ public class NumberToThreeDigitsFunction implements Function<NumberRequest, Thre
         if (size < maxSize) {
 
             tmpValue = DigitsExtractUtil.DECIMAL_FORMAT
-                    .format(Long.parseLong(input.getValue()))
+                    .format(Long.parseLong(input.getAbsoluteValue()))
                     .substring(Math.max(maxSize - beginIndex, 0), maxSize - endIndex);
         } else {
 
-            String value = input.getValue();
+            String value = input.getAbsoluteValue();
             tmpValue = DigitsExtractUtil.DECIMAL_FORMAT
                     .format(Long.parseLong(value.substring(size - beginIndex, size - endIndex)));
         }
