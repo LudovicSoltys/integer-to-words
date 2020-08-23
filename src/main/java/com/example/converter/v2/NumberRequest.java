@@ -3,7 +3,7 @@ package com.example.converter.v2;
 import java.util.regex.Pattern;
 
 /**
- * Encapsulation for an {@link Integer}
+ * Encapsulation for a {@link String}
  */
 class NumberRequest {
 

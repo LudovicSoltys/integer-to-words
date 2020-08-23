@@ -10,7 +10,7 @@ import java.util.function.Function;
  *
  * @link https://en.wikipedia.org/wiki/Metric_prefix
  */
-enum EnglishLongScaleMetricPrefix {
+enum EnglishLongScaleMetric {
 
     // 10^24
     QUADRILLION(new OverLongNumberToThreeDigitsFunction(24), 24, "quadrillion"),
@@ -43,16 +43,14 @@ enum EnglishLongScaleMetricPrefix {
 
     private final int minDigitsCount;
 
-    private final String suffix;
+    private final Function<ThreeDigits, String> translator;
 
-    private static final Function<ThreeDigits, String> FUNCTION = new EnglishThreeDigitsFunction();
-
-    EnglishLongScaleMetricPrefix(Function<NumberRequest, ThreeDigits> function, int minDigitsCount, String suffix) {
+    EnglishLongScaleMetric(Function<NumberRequest, ThreeDigits> function, int minDigitsCount, String suffix) {
         this.threeDigitsFunction = function;
 
         this.minDigitsCount = minDigitsCount;
 
-        this.suffix = " " + suffix;
+        translator = new EnglishThreeDigitsFunction(suffix);
     }
 
     int getMinDigitsCount() {
@@ -68,10 +66,10 @@ enum EnglishLongScaleMetricPrefix {
 
         ThreeDigits number = threeDigitsFunction.apply(input);
 
-        if (!number.isZero()) {
-            return FUNCTION.apply(number) + suffix + " ";
-        } else {
+        if (number.isZero()) {
             return "";
+        } else {
+            return translator.apply(number);
         }
     }
 }

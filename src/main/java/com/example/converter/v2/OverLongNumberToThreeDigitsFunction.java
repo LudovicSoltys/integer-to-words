@@ -2,6 +2,9 @@ package com.example.converter.v2;
 
 import java.util.function.Function;
 
+/**
+ * Function for transforming a {@link NumberRequest} that has more than 18 characters ({@link Long#MAX_VALUE} and above)
+ */
 public class OverLongNumberToThreeDigitsFunction implements Function<NumberRequest, ThreeDigits> {
 
     private final int endIndex;

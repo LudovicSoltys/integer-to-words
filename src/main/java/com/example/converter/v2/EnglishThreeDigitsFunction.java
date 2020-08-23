@@ -1,6 +1,5 @@
 package com.example.converter.v2;
 
-import com.example.converter.v2.ThreeDigits;
 import com.google.common.collect.ImmutableMap;
 
 import java.util.Map;
@@ -10,6 +9,8 @@ import java.util.function.Function;
  * an implementation of {@link Function} that converts a {@link ThreeDigits} into an english {@link String} of numbers
  */
 class EnglishThreeDigitsFunction implements Function<ThreeDigits, String> {
+
+    private final String suffix;
 
     /** association of numbers between 0 and 19 to their english word */
     private static final Map<Integer, String> zeroToNineteen = ImmutableMap
@@ -64,6 +65,10 @@ class EnglishThreeDigitsFunction implements Function<ThreeDigits, String> {
             .put(9, "ninety")
             .build();
 
+    public EnglishThreeDigitsFunction(String suffix) {
+        this.suffix = suffix;
+    }
+
     @Override
     public String apply(ThreeDigits number) {
 
@@ -81,6 +86,6 @@ class EnglishThreeDigitsFunction implements Function<ThreeDigits, String> {
             result = zeroToNine.get(number.getHundred()) + " hundred" + (result.isEmpty() ? "" : " " + result);
         }
 
-        return result;
+        return result + " " + suffix + " ";
     }
 }

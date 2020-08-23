@@ -2,6 +2,9 @@ package com.example.converter.v2;
 
 import java.util.function.Function;
 
+/**
+ * Basic function for transforming a {@link NumberRequest} that has less than 18 characters (< {@link Long#MAX_VALUE})
+ */
 public class NumberToThreeDigitsFunction implements Function<NumberRequest, ThreeDigits> {
 
     private final int beginIndex;
@@ -25,13 +28,13 @@ public class NumberToThreeDigitsFunction implements Function<NumberRequest, Thre
         if (size < maxSize) {
 
             tmpValue = DigitsExtractUtil.DECIMAL_FORMAT
-                    .format(Integer.parseInt(input.getValue()))
+                    .format(Long.parseLong(input.getValue()))
                     .substring(Math.max(maxSize - beginIndex, 0), maxSize - endIndex);
         } else {
 
             String value = input.getValue();
             tmpValue = DigitsExtractUtil.DECIMAL_FORMAT
-                    .format(Integer.parseInt(value.substring(size - beginIndex, size - endIndex)));
+                    .format(Long.parseLong(value.substring(size - beginIndex, size - endIndex)));
         }
 
         return new ThreeDigits(Integer.parseInt(tmpValue));

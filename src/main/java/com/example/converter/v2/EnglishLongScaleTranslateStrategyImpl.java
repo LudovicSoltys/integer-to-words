@@ -3,7 +3,7 @@ package com.example.converter.v2;
 import java.util.List;
 
 /**
- * an implmentation of {@link TranslateStrategy} for the english long scale metric
+ * an implementation of {@link TranslateStrategy} for the english long scale metric
  */
 class EnglishLongScaleTranslateStrategyImpl implements TranslateStrategy {
 
@@ -14,11 +14,11 @@ class EnglishLongScaleTranslateStrategyImpl implements TranslateStrategy {
             return WordResponse.zeroWordResponse();
         }
 
-        List<EnglishLongScaleMetricPrefix> converters = EnglishPrefixListFactory.get(number.size());
+        List<EnglishLongScaleMetric> converters = EnglishPrefixListFactory.get(number.size());
 
         StringBuilder output = new StringBuilder();
 
-        for (EnglishLongScaleMetricPrefix entry : converters) {
+        for (EnglishLongScaleMetric entry : converters) {
             output.append(entry.translate(number));
         }
 

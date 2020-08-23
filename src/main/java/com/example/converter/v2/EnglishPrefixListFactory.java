@@ -11,13 +11,13 @@ public class EnglishPrefixListFactory {
     /**
      *
      * @param size the size of for which the list is created
-     * @return a {@link List} of {@link EnglishLongScaleMetricPrefix}
+     * @return a {@link List} of {@link EnglishLongScaleMetric}
      */
-    public static List<EnglishLongScaleMetricPrefix> get(Integer size) {
+    public static List<EnglishLongScaleMetric> get(Integer size) {
 
-        List<EnglishLongScaleMetricPrefix> list = new ArrayList<>();
+        List<EnglishLongScaleMetric> list = new ArrayList<>();
 
-        for (EnglishLongScaleMetricPrefix entry : EnglishLongScaleMetricPrefix.values()) {
+        for (EnglishLongScaleMetric entry : EnglishLongScaleMetric.values()) {
             if (entry.getMinDigitsCount() < size) {
                 list.add(entry);
             }
