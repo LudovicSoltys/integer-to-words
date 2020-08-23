@@ -1,13 +1,13 @@
-package com.example.converter.service;
+package com.example.converter.v1;
 
-import com.example.converter.domain.NumberRequest;
-import com.example.converter.domain.WordResponse;
+import com.example.converter.v1.ConversionServiceImpl;
+import com.example.converter.v1.NumberRequest;
+import com.example.converter.v1.WordResponse;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import java.util.function.Function;
 import java.util.stream.Stream;
 
 /** @see ConversionServiceImpl#convertNumber(NumberRequest)  */

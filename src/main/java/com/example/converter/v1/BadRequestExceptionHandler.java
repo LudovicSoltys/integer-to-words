@@ -1,4 +1,4 @@
-package com.example.converter.binding;
+package com.example.converter.v1;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -11,7 +11,7 @@ import org.springframework.web.context.request.WebRequest;
  * an exception handler for bad requests
  */
 @ControllerAdvice
-public class BadRequestExceptionHandler {
+class BadRequestExceptionHandler {
 
     @ExceptionHandler(value = { NumberFormatException.class, IllegalArgumentException.class })
     protected ResponseEntity<Object> handleBadRequest(RuntimeException ex, WebRequest request) {

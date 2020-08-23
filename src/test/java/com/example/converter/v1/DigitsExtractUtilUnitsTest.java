@@ -1,6 +1,5 @@
-package com.example.converter.service;
+package com.example.converter.v1;
 
-import com.example.converter.domain.ThreeDigits;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -8,8 +7,8 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
 
-/** see {@link DigitsExtractUtil#thousands(Integer)}*/
-class DigitsExtractUtilThousandsTest {
+/** see {@link DigitsExtractUtil#units(Integer)}*/
+class DigitsExtractUtilUnitsTest {
 
     @ParameterizedTest
     @MethodSource("utilShouldExtractDigits")
@@ -18,7 +17,7 @@ class DigitsExtractUtilThousandsTest {
         // given
 
         // when
-        ThreeDigits result = DigitsExtractUtil.thousands(value);
+        ThreeDigits result = DigitsExtractUtil.units(value);
 
         // then
         Assertions.assertThat(result.getHundred()).isEqualTo(expectedHundred);
@@ -33,9 +32,8 @@ class DigitsExtractUtilThousandsTest {
      */
     private static Stream<Arguments> utilShouldExtractDigits() {
         return Stream.of(
-                Arguments.of(TestUtil.randomInt(0, 999), "0", "0", "0"),
-                Arguments.of(TestUtil.randomInt(0, 999) * 1000000, "0", "0", "0"),
-                Arguments.of(123456789, "4", "5", "6")
+                Arguments.of(TestUtil.randomInt(0, 999999) * 1000, "0", "0", "0"),
+                Arguments.of(123456789, "7", "8", "9")
         );
     }
 }

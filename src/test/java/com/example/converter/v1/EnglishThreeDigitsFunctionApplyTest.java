@@ -1,12 +1,14 @@
-package com.example.converter.service;
+package com.example.converter.v1;
 
-import com.example.converter.domain.ThreeDigits;
+import com.example.converter.v1.ThreeDigits;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
+
+import static com.example.converter.v1.ConversionServiceImpl.EnglishThreeDigitsFunction;
 
 /** see {@link EnglishThreeDigitsFunction#apply(ThreeDigits)} */
 class EnglishThreeDigitsFunctionApplyTest {

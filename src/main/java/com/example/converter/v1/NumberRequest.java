@@ -1,11 +1,9 @@
-package com.example.converter.domain;
-
-import com.example.converter.service.DigitsExtractUtil;
+package com.example.converter.v1;
 
 /**
  * Encapsulation for an {@link Integer}
  */
-public class NumberRequest {
+class NumberRequest {
 
     private final Integer value;
 
@@ -19,7 +17,7 @@ public class NumberRequest {
 
     private final Integer min = 0;
 
-    public NumberRequest(Integer value) {
+    NumberRequest(Integer value) {
 
         if (value == null) {
             throw new IllegalArgumentException("Expect only numbers between " + min + " and " + max + ". Actual value is null");

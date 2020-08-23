@@ -1,20 +1,18 @@
-package com.example.converter.service;
-
-import com.example.converter.domain.ThreeDigits;
+package com.example.converter.v1;
 
 import java.text.DecimalFormat;
 
 /**
  * a toolbox for extracting {@link ThreeDigits} from {@link Integer}s
  */
-public class DigitsExtractUtil {
+class DigitsExtractUtil {
 
     /**
      *
      * @param input an Integer
      * @return a {@link ThreeDigits} of the millions of the input (XXX------)
      */
-    public static ThreeDigits millions(Integer input) {
+    static ThreeDigits millions(Integer input) {
 
         String number = new DecimalFormat("000000000").format(input);
         return new ThreeDigits(Integer.parseInt(number.substring(0, 3)));
@@ -25,7 +23,7 @@ public class DigitsExtractUtil {
      * @param input an Integer
      * @return a {@link ThreeDigits} of the thousands of the input (---XXX---)
      */
-    public static ThreeDigits thousands(Integer input) {
+    static ThreeDigits thousands(Integer input) {
 
         String number = new DecimalFormat("000000000").format(input);
         return new ThreeDigits(Integer.parseInt(number.substring(3, 6)));
@@ -36,7 +34,7 @@ public class DigitsExtractUtil {
      * @param input an Integer
      * @return a {@link ThreeDigits} of the units of the input (------XXX)
      */
-    public static ThreeDigits units(Integer input) {
+    static ThreeDigits units(Integer input) {
 
         String number = new DecimalFormat("000000000").format(input);
         return new ThreeDigits(Integer.parseInt(number.substring(6, 9)));

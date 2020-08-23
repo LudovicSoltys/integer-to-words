@@ -1,5 +1,6 @@
-package com.example.converter.exposed;
+package com.example.converter.v1;
 
+import com.example.converter.v1.IntegerToWordsConversionRestService;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

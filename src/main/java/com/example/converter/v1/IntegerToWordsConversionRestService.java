@@ -1,9 +1,5 @@
-package com.example.converter.exposed;
+package com.example.converter.v1;
 
-import com.example.converter.domain.NumberRequest;
-import com.example.converter.domain.WordResponse;
-import com.example.converter.service.ConversionService;
-import com.example.converter.service.ConversionServiceImpl;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;

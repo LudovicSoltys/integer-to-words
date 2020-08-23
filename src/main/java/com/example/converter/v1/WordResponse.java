@@ -1,4 +1,4 @@
-package com.example.converter.domain;
+package com.example.converter.v1;
 
 import org.immutables.value.Value;
 
@@ -6,7 +6,7 @@ import org.immutables.value.Value;
  * The result of the conversion process
  */
 @Value.Immutable
-public interface WordResponse {
+interface WordResponse {
 
     String getValue();
 
