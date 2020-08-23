@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
  * Webservice for converting an {@link Integer} into an English-formatted string
  */
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v2")
 public class IntegerToWordsConversionRestService {
 
     private final ConversionService service = new ConversionServiceImpl();
