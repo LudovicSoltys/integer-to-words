@@ -1,8 +1,5 @@
 package com.example.converter.v1;
 
-import com.example.converter.v1.ConversionServiceImpl;
-import com.example.converter.v1.NumberRequest;
-import com.example.converter.v1.WordResponse;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
