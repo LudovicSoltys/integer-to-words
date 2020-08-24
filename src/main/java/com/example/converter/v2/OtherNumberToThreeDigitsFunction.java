@@ -5,13 +5,13 @@ import java.util.function.Function;
 /**
  * Basic function for transforming a {@link NumberRequest} that has less than 18 characters (< {@link Long#MAX_VALUE})
  */
-public class NumberToThreeDigitsFunction implements Function<NumberRequest, ThreeDigits> {
+public class OtherNumberToThreeDigitsFunction implements Function<NumberRequest, ThreeDigits> {
 
     private final int beginIndex;
 
     private final int endIndex;
 
-    public NumberToThreeDigitsFunction(int powerOfTen) {
+    public OtherNumberToThreeDigitsFunction(int powerOfTen) {
         if (powerOfTen > 15) {
             throw new IllegalArgumentException("Input shall have less than 18 characters");
         }
@@ -23,10 +23,10 @@ public class NumberToThreeDigitsFunction implements Function<NumberRequest, Thre
     @Override
     public ThreeDigits apply(NumberRequest input) {
 
-        int size = input.size();
-        String value = input.getAbsoluteValue();
+        int maxSize = 18;
         String tmpValue = DigitsExtractUtil.DECIMAL_FORMAT
-                .format(Long.parseLong(value.substring(Math.max(size - beginIndex, 0), size - endIndex)));
+                .format(Long.parseLong(input.getAbsoluteValue()))
+                .substring(Math.max(maxSize - beginIndex, 0), maxSize - endIndex);
 
         return new ThreeDigits(Integer.parseInt(tmpValue));
     }

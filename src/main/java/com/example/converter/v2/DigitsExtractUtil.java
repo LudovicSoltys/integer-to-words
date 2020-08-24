@@ -8,7 +8,5 @@ import java.text.Format;
  */
 public class DigitsExtractUtil {
 
-    public static final String EIGHTEEN_ZEROS_PATTERN = "000000000000000000";
-
-    public static final Format DECIMAL_FORMAT = new DecimalFormat(EIGHTEEN_ZEROS_PATTERN);
+    public static final Format DECIMAL_FORMAT = new DecimalFormat("000000000000000000");
 }

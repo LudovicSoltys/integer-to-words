@@ -1,6 +1,7 @@
 package com.example.converter.v2;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * an implementation of {@link TranslateStrategy} for the english long scale metric
@@ -14,18 +15,13 @@ class EnglishLongScaleTranslateStrategyImpl implements TranslateStrategy {
             return WordResponse.zeroWordResponse();
         }
 
-        List<EnglishLongScaleMetric> converters = EnglishPrefixListFactory.get(number.size());
+        String output = EnglishPrefixListFactory
+                .get(number.size())
+                .get()
+                .stream()
+                .map(translator -> translator.translate(number))
+                .collect(Collectors.joining(" "));
 
-        StringBuilder output = new StringBuilder();
-
-        if (number.isLowerThanZero()) {
-            output.append("minus ");
-        }
-
-        for (EnglishLongScaleMetric entry : converters) {
-            output.append(entry.translate(number));
-        }
-
-        return ImmutableWordResponse.builder().value(output.toString().trim()).build();
+        return ImmutableWordResponse.builder().value(number.isLowerThanZero() ? "minus " : "" + output.trim()).build();
     }
 }

@@ -56,6 +56,7 @@ class ConversionServiceImplConvertTest {
                 Arguments.of("75000", "seventy-five thousand"),
                 Arguments.of("7000000", "seven million"),
                 Arguments.of("7483647", "seven million four hundred eighty-three thousand six hundred forty-seven"),
+                Arguments.of("922337203685477580", "nine hundred twenty-two billiard three hundred thirty-seven billion two hundred three milliard six hundred eighty-five million four hundred seventy-seven thousand five hundred eighty"),
                 Arguments.of(Long.MAX_VALUE + "", "nine trillion two hundred twenty-three billiard three hundred seventy-two billion thirty-six milliard eight hundred fifty-four million seven hundred seventy-five thousand eight hundred seven"),
                 Arguments.of("111223372036854775807", "one hundred eleven trillion two hundred twenty-three billiard three hundred seventy-two billion thirty-six milliard eight hundred fifty-four million seven hundred seventy-five thousand eight hundred seven")
         );

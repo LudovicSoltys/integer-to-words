@@ -26,23 +26,17 @@ class EnglishLongScaleMetricTranslateTest {
     private static Stream<Arguments> converterShouldTranslateIntegerIntoString() {
         return Stream.of(
                 Arguments.of(EnglishLongScaleMetric.ONE, new NumberRequest("1000"), ""),
-                Arguments.of(EnglishLongScaleMetric.ONE, new NumberRequest("1"), "one  "),
+                Arguments.of(EnglishLongScaleMetric.ONE, new NumberRequest("1"), "one"),
                 Arguments.of(EnglishLongScaleMetric.THOUSAND, new NumberRequest("1000000"), ""),
-                Arguments.of(EnglishLongScaleMetric.THOUSAND, new NumberRequest("1000"), "one thousand "),
+                Arguments.of(EnglishLongScaleMetric.THOUSAND, new NumberRequest("1000"), "one thousand"),
                 Arguments.of(EnglishLongScaleMetric.MILLION, new NumberRequest("1"), ""),
-                Arguments.of(EnglishLongScaleMetric.MILLION, new NumberRequest("1000000"), "one million "),
+                Arguments.of(EnglishLongScaleMetric.MILLION, new NumberRequest("1000000"), "one million"),
                 Arguments.of(EnglishLongScaleMetric.MILLARD, new NumberRequest("1"), ""),
-                Arguments.of(EnglishLongScaleMetric.MILLARD, new NumberRequest("1000000000"), "one milliard "),
+                Arguments.of(EnglishLongScaleMetric.MILLARD, new NumberRequest("1000000000"), "one milliard"),
                 Arguments.of(EnglishLongScaleMetric.BILLION, new NumberRequest("1"), ""),
-                Arguments.of(EnglishLongScaleMetric.BILLION, new NumberRequest("1000000000000"), "one billion "),
+                Arguments.of(EnglishLongScaleMetric.BILLION, new NumberRequest("1000000000000"), "one billion"),
                 Arguments.of(EnglishLongScaleMetric.BILLIARD, new NumberRequest("1"), ""),
-                Arguments.of(EnglishLongScaleMetric.BILLIARD, new NumberRequest("1000000000000000"), "one billiard "),
-                Arguments.of(EnglishLongScaleMetric.TRILLION, new NumberRequest("1"), ""),
-                Arguments.of(EnglishLongScaleMetric.TRILLION, new NumberRequest("1000000000000000000"), "one trillion "),
-                Arguments.of(EnglishLongScaleMetric.TRILLIARD, new NumberRequest("1"), ""),
-                Arguments.of(EnglishLongScaleMetric.TRILLIARD, new NumberRequest("1000000000000000000000"), "one trilliard "),
-                Arguments.of(EnglishLongScaleMetric.QUADRILLION, new NumberRequest("1"), ""),
-                Arguments.of(EnglishLongScaleMetric.QUADRILLION, new NumberRequest("1000000000000000000000000"), "one quadrillion ")
+                Arguments.of(EnglishLongScaleMetric.BILLIARD, new NumberRequest("1000000000000000"), "one billiard")
         );
     }
 }

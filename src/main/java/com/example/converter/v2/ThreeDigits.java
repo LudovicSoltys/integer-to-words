@@ -56,6 +56,10 @@ public class ThreeDigits {
         return value == 0;
     }
 
+    boolean isNotZero() {
+        return value != 0;
+    }
+
     static ThreeDigits zero() {
         return new ThreeDigits(0);
     }

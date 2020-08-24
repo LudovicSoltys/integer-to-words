@@ -11,7 +11,16 @@ import java.util.function.Function;
  *
  * @link https://en.wikipedia.org/wiki/Metric_prefix
  */
-enum EnglishLongScaleMetric implements EnglishTranslator {
+enum OverLongEnglishLongScaleMetric implements EnglishTranslator {
+
+    // 10^24
+    QUADRILLION(24, "quadrillion"),
+
+    // 10^21
+    TRILLIARD(21, "trilliard"),
+
+    // 10^18
+    TRILLION(18, "trillion"),
 
     // 10^15
     BILLIARD(15, "billiard"),
@@ -35,8 +44,12 @@ enum EnglishLongScaleMetric implements EnglishTranslator {
 
     private final Function<ThreeDigits, String> translator;
 
-    EnglishLongScaleMetric(int powerOfTen, String suffix) {
-        threeDigitsFunction = new OtherNumberToThreeDigitsFunction(powerOfTen);
+    OverLongEnglishLongScaleMetric(int powerOfTen, String suffix) {
+        if (powerOfTen < 18) {
+            threeDigitsFunction = new NumberToThreeDigitsFunction(powerOfTen);
+        } else {
+            threeDigitsFunction = new OverLongNumberToThreeDigitsFunction(powerOfTen);
+        }
 
         translator = new EnglishThreeDigitsFunction(suffix);
     }
@@ -50,8 +63,5 @@ enum EnglishLongScaleMetric implements EnglishTranslator {
     public String translate(NumberRequest input) {
 
         return Optional.of(input).map(threeDigitsFunction).map(translator).orElse("");
-//        ThreeDigits number = threeDigitsFunction.apply(input);
-//
-//        return translator.apply(number);
     }
 }

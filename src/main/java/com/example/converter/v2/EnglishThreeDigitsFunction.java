@@ -72,6 +72,10 @@ class EnglishThreeDigitsFunction implements Function<ThreeDigits, String> {
     @Override
     public String apply(ThreeDigits number) {
 
+        if (number.isZero()) {
+            return "";
+        }
+
         String result;
 
         if (number.has2LastDigitsLowerThan20()) {
@@ -86,6 +90,6 @@ class EnglishThreeDigitsFunction implements Function<ThreeDigits, String> {
             result = zeroToNine.get(number.getHundred()) + " hundred" + (result.isEmpty() ? "" : " " + result);
         }
 
-        return result + " " + suffix + " ";
+        return (result + " " + suffix).trim();
     }
 }
