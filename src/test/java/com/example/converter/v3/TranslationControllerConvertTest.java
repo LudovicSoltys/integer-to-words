@@ -1,10 +1,12 @@
-package com.example.converter.v2;
+package com.example.converter.v3;
 
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
@@ -13,20 +15,18 @@ import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(ExtraLongNumberRestService.class)
-class ExtraLongNumberToWordsConversionRestServiceConvertExtraLongNumberTest {
+@SpringBootTest(classes = { TranslationControllerConvertTest.TranslationControllerConvertTestConfig.class })
+@AutoConfigureMockMvc
+class TranslationControllerConvertTest {
 
     @Autowired
     private MockMvc mockMvc;
-
-    @MockBean
-    private ConversionService conversionService;
 
     @Test
     void shouldReturnInputTranslatedIntoWords() throws Exception {
 
         // given
-        String input = "111223372036854775807";
+        Integer input = 245;
 
         // when
         ResultActions result = when(input);
@@ -35,13 +35,21 @@ class ExtraLongNumberToWordsConversionRestServiceConvertExtraLongNumberTest {
         result
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().contentType("application/json"))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.value").value("one hundred eleven trillion two hundred twenty-three billiard three hundred seventy-two billion thirty-six milliard eight hundred fifty-four million seven hundred seventy-five thousand eight hundred seven"));
+                .andExpect(MockMvcResultMatchers.jsonPath("$.value").value("two hundred forty-five"));
 
     }
 
-    private ResultActions when(String value) throws Exception {
+    private ResultActions when(Integer value) throws Exception {
         return mockMvc
-                .perform(MockMvcRequestBuilders.get("/api/v2/convert/{value}", value))
+                .perform(MockMvcRequestBuilders.get("/api/v3/convert/{value}", value))
                 .andDo(MockMvcResultHandlers.print());
+    }
+
+    @Configuration
+    @Import(AppV3WebConfig.class)
+    static class TranslationControllerConvertTestConfig {
+
+        @Autowired
+        private TranslationService translationService;
     }
 }

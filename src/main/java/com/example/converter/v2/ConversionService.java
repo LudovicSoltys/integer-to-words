@@ -1,9 +1,9 @@
 package com.example.converter.v2;
 
 /**
- * Service for converting a {@link NumberRequest} into a {@link WordResponse}
+ * Service for converting a {@link String} into a {@link WordResponse}
  */
 interface ConversionService {
 
-    WordResponse convertNumber(NumberRequest number);
+    WordResponse convertNumber(String number);
 }

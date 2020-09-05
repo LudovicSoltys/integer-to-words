@@ -1,15 +1,33 @@
 package com.example.converter.v2;
 
+import com.example.converter.v2.english.EnglishNumber;
+import com.example.converter.v2.english.EnglishPrefixListFactory;
+
+import java.util.stream.Collectors;
+
 /**
  * default implementation for {@link ConversionService}
  */
 public class ConversionServiceImpl implements ConversionService {
 
-    private final TranslateStrategy strategy = new EnglishLongScaleTranslateStrategyImpl();
-
     @Override
-    public WordResponse convertNumber(NumberRequest number) {
+    public WordResponse convertNumber(String input) {
 
-        return strategy.convertNumber(number);
+        EnglishNumber number = EnglishNumber.englishNumber(input);
+
+        if (number.isZero()) {
+            return WordResponse.zeroWordResponse();
+        }
+
+        String output = EnglishPrefixListFactory
+                .get(number.length())
+                .get()
+                .stream()
+                .map(translator -> translator.translate(number))
+                .collect(Collectors.joining(" "));
+
+        return ImmutableWordResponse.builder()
+                .value(number.isLowerThanZero() ? "minus " : "" + output.trim())
+                .build();
     }
 }

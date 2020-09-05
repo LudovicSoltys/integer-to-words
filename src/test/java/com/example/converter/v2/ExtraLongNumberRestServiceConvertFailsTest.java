@@ -14,7 +14,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(ExtraLongNumberRestService.class)
-class ExtraLongNumberToWordsConversionRestServiceConvertExtraLongNumberTest {
+class ExtraLongNumberRestServiceConvertFailsTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -23,19 +23,17 @@ class ExtraLongNumberToWordsConversionRestServiceConvertExtraLongNumberTest {
     private ConversionService conversionService;
 
     @Test
-    void shouldReturnInputTranslatedIntoWords() throws Exception {
+    void shouldReturnHttpErrorWhenTranslationFails() throws Exception {
 
         // given
-        String input = "111223372036854775807";
+        String input = "-24x5";
 
         // when
         ResultActions result = when(input);
 
         // then
         result
-                .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.content().contentType("application/json"))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.value").value("one hundred eleven trillion two hundred twenty-three billiard three hundred seventy-two billion thirty-six milliard eight hundred fifty-four million seven hundred seventy-five thousand eight hundred seven"));
+                .andExpect(MockMvcResultMatchers.status().isBadRequest());
 
     }
 
