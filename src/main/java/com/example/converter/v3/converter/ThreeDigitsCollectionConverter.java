@@ -2,9 +2,26 @@ package com.example.converter.v3.converter;
 
 import com.example.converter.v3.ThreeDigitsCollection;
 
-public interface ThreeDigitsCollectionConverter {
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-    boolean check(ThreeDigitsCollection collection);
+/**
+ * Définition d'une stratégie de conversion
+ */
+public interface ThreeDigitsCollectionConverter extends Predicate<ThreeDigitsCollection>,
+        Function<ThreeDigitsCollection, String> {
 
-    String convert(ThreeDigitsCollection collection);
+    /**
+     *
+     * @param collection
+     * @return true si la conversion s'applique
+     */
+    boolean test(ThreeDigitsCollection collection);
+
+    /**
+     *
+     * @param collection
+     * @return une chaine de caractères
+     */
+    String apply(ThreeDigitsCollection collection);
 }

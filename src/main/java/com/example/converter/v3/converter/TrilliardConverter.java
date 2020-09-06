@@ -10,12 +10,12 @@ public class TrilliardConverter extends AbstractConverter implements ThreeDigits
     }
 
     @Override
-    public boolean check(ThreeDigitsCollection collection) {
+    public boolean test(ThreeDigitsCollection collection) {
         return collection.trilliards().isPresent();
     }
 
     @Override
-    public String convert(ThreeDigitsCollection collection) {
-        return templateEngine.processTrilliard(collection.trilliards());
+    public String apply(ThreeDigitsCollection collection) {
+        return templateEngine.processTrilliard(collection.trilliards().get());
     }
 }

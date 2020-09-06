@@ -10,12 +10,12 @@ public class MillionConverter extends AbstractConverter implements ThreeDigitsCo
     }
 
     @Override
-    public boolean check(ThreeDigitsCollection collection) {
+    public boolean test(ThreeDigitsCollection collection) {
         return collection.millions().isPresent();
     }
 
     @Override
-    public String convert(ThreeDigitsCollection collection) {
-        return templateEngine.processMillion(collection.millions());
+    public String apply(ThreeDigitsCollection collection) {
+        return templateEngine.processMillion(collection.millions().get());
     }
 }

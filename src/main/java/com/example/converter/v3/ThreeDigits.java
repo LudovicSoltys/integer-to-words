@@ -20,8 +20,4 @@ public interface ThreeDigits {
 
         return ImmutableThreeDigits.builder().value(value).build();
     }
-
-    static ThreeDigits zero() {
-        return threeDigits("0");
-    }
 }

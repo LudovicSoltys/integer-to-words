@@ -2,12 +2,14 @@ package com.example.converter.v2;
 
 import com.example.converter.v2.english.EnglishNumber;
 import com.example.converter.v2.english.EnglishPrefixListFactory;
+import org.springframework.stereotype.Service;
 
 import java.util.stream.Collectors;
 
 /**
  * default implementation for {@link ConversionService}
  */
+@Service
 public class ConversionServiceImpl implements ConversionService {
 
     @Override

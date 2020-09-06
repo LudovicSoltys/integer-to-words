@@ -15,7 +15,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = { TranslationControllerConvertTest.TranslationControllerConvertTestConfig.class })
+@SpringBootTest(classes = { AppV3WebConfig.class })
 @AutoConfigureMockMvc
 class TranslationControllerConvertTest {
 
@@ -43,13 +43,5 @@ class TranslationControllerConvertTest {
         return mockMvc
                 .perform(MockMvcRequestBuilders.get("/api/v3/convert/{value}", value))
                 .andDo(MockMvcResultHandlers.print());
-    }
-
-    @Configuration
-    @Import(AppV3WebConfig.class)
-    static class TranslationControllerConvertTestConfig {
-
-        @Autowired
-        private TranslationService translationService;
     }
 }

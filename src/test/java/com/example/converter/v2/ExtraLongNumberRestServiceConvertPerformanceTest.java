@@ -3,7 +3,9 @@ package com.example.converter.v2;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
@@ -13,14 +15,12 @@ import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(ExtraLongNumberRestService.class)
+@SpringBootTest(classes = {AppV2WebConfig.class})
+@AutoConfigureMockMvc
 class ExtraLongNumberRestServiceConvertPerformanceTest {
 
     @Autowired
     private MockMvc mockMvc;
-
-    @MockBean
-    private ConversionService conversionService;
 
     @RepeatedTest(5)
     void shouldReturnInputTranslatedIntoWords() throws Exception {

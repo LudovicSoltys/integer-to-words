@@ -10,12 +10,12 @@ public class NegativeSignConverter extends AbstractConverter implements ThreeDig
     }
 
     @Override
-    public boolean check(ThreeDigitsCollection collection) {
+    public boolean test(ThreeDigitsCollection collection) {
         return collection.isNegative();
     }
 
     @Override
-    public String convert(ThreeDigitsCollection collection) {
+    public String apply(ThreeDigitsCollection collection) {
         return templateEngine.processNegativeSign();
     }
 }

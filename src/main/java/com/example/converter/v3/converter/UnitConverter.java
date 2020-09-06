@@ -10,12 +10,13 @@ public class UnitConverter extends AbstractConverter implements ThreeDigitsColle
     }
 
     @Override
-    public boolean check(ThreeDigitsCollection collection) {
+    public boolean test(ThreeDigitsCollection collection) {
         return collection.units().isPresent();
     }
 
     @Override
-    public String convert(ThreeDigitsCollection collection) {
-        return templateEngine.processUnit(collection.units());
+    public String apply(ThreeDigitsCollection collection) {
+
+        return templateEngine.processUnit(collection.units().get());
     }
 }

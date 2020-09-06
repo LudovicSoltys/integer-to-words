@@ -7,14 +7,12 @@ import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.stream.Stream;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = {TranslationServiceImplConvertTest.TranslationServiceImplConvertTestConfig.class})
+@SpringBootTest(classes = {AppV3WebConfig.class})
 class TranslationServiceImplConvertTest {
 
     @Autowired
@@ -72,13 +70,5 @@ class TranslationServiceImplConvertTest {
                 Arguments.of(Long.MAX_VALUE + "", "nine trillion two hundred twenty-three billiard three hundred seventy-two billion thirty-six milliard eight hundred fifty-four million seven hundred seventy-five thousand eight hundred seven"),
                 Arguments.of("111223372036854775807", "one hundred eleven trillion two hundred twenty-three billiard three hundred seventy-two billion thirty-six milliard eight hundred fifty-four million seven hundred seventy-five thousand eight hundred seven")
         );
-    }
-
-    @Configuration
-    @Import(AppV3WebConfig.class)
-    static class TranslationServiceImplConvertTestConfig {
-
-        @Autowired
-        private TranslationService translationService;
     }
 }

@@ -10,12 +10,12 @@ public class ThousandConverter extends AbstractConverter implements ThreeDigitsC
     }
 
     @Override
-    public boolean check(ThreeDigitsCollection collection) {
+    public boolean test(ThreeDigitsCollection collection) {
         return collection.thousands().isPresent();
     }
 
     @Override
-    public String convert(ThreeDigitsCollection collection) {
-        return templateEngine.processThousand(collection.thousands());
+    public String apply(ThreeDigitsCollection collection) {
+        return templateEngine.processThousand(collection.thousands().get());
     }
 }

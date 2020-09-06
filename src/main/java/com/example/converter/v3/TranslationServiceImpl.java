@@ -23,7 +23,7 @@ public class TranslationServiceImpl implements TranslationService {
     public WordResponse translateNumber(EnglishNumber number) {
 
         ThreeDigitsCollection collection = ThreeDigitsCollection.instance(number);
-        String output = get(collection).convert(collection);
+        String output = get(collection).apply(collection);
 
         return ImmutableWordResponse.builder()
                 .value(output)

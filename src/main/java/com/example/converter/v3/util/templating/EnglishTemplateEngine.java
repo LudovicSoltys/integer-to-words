@@ -3,6 +3,7 @@ package com.example.converter.v3.util.templating;
 import com.example.converter.v3.ThreeDigits;
 import org.springframework.context.MessageSource;
 
+import javax.validation.constraints.NotNull;
 import java.util.Locale;
 import java.util.Optional;
 
@@ -20,9 +21,9 @@ public class EnglishTemplateEngine {
         this.messageSource = messageSource;
     }
 
-    private String value(String property, Optional<ThreeDigits> object) {
-        if (object.isPresent() && object.get().isNotZero()) {
-            String param = messageSource.getMessage(object.get().getValue(), null, Locale.ENGLISH);
+    private String value(@NotNull String property, @NotNull ThreeDigits object) {
+        if (object.isNotZero()) {
+            String param = messageSource.getMessage(object.getValue(), null, Locale.ENGLISH);
             return messageSource.getMessage(property, new Object[]{param}, Locale.ENGLISH);
         }
 
@@ -50,9 +51,9 @@ public class EnglishTemplateEngine {
      * @param object an {@link Optional} of a {@link ThreeDigits}
      * @return a {@link String}
      */
-    public String processUnit(Optional<ThreeDigits> object) {
-        if (object.isPresent() && object.get().isNotZero()) {
-            return messageSource.getMessage(object.get().getValue(), null, Locale.ENGLISH);
+    public String processUnit(@NotNull ThreeDigits object) {
+        if (object.isNotZero()) {
+            return messageSource.getMessage(object.getValue(), null, Locale.ENGLISH);
         }
         return "";
     }
@@ -62,7 +63,7 @@ public class EnglishTemplateEngine {
      * @param object an {@link Optional} of a {@link ThreeDigits}
      * @return a {@link String}
      */
-    public String processThousand(Optional<ThreeDigits> object) {
+    public String processThousand(@NotNull ThreeDigits object) {
         return value("thousand", object);
     }
 
@@ -71,7 +72,7 @@ public class EnglishTemplateEngine {
      * @param object an {@link Optional} of a {@link ThreeDigits}
      * @return a {@link String}
      */
-    public String processMillion(Optional<ThreeDigits> object) {
+    public String processMillion(@NotNull ThreeDigits object) {
         return value("million", object);
 
     }
@@ -81,7 +82,7 @@ public class EnglishTemplateEngine {
      * @param object an {@link Optional} of a {@link ThreeDigits}
      * @return a {@link String}
      */
-    public String processMilliard(Optional<ThreeDigits> object) {
+    public String processMilliard(@NotNull ThreeDigits object) {
         return value("milliard", object);
     }
 
@@ -90,7 +91,7 @@ public class EnglishTemplateEngine {
      * @param object an {@link Optional} of a {@link ThreeDigits}
      * @return a {@link String}
      */
-    public String processBillion(Optional<ThreeDigits> object) {
+    public String processBillion(@NotNull ThreeDigits object) {
         return value("billion", object);
     }
 
@@ -99,7 +100,7 @@ public class EnglishTemplateEngine {
      * @param object an {@link Optional} of a {@link ThreeDigits}
      * @return a {@link String}
      */
-    public String processBilliard(Optional<ThreeDigits> object) {
+    public String processBilliard(@NotNull ThreeDigits object) {
         return value("billiard", object);
     }
 
@@ -108,7 +109,7 @@ public class EnglishTemplateEngine {
      * @param object an {@link Optional} of a {@link ThreeDigits}
      * @return a {@link String}
      */
-    public String processTrillion(Optional<ThreeDigits> object) {
+    public String processTrillion(@NotNull ThreeDigits object) {
         return value("trillion", object);
     }
 
@@ -117,7 +118,7 @@ public class EnglishTemplateEngine {
      * @param object an {@link Optional} of a {@link ThreeDigits}
      * @return a {@link String}
      */
-    public String processTrilliard(Optional<ThreeDigits> object) {
+    public String processTrilliard(@NotNull ThreeDigits object) {
         return value("trilliard", object);
     }
 
@@ -126,7 +127,7 @@ public class EnglishTemplateEngine {
      * @param object an {@link Optional} of a {@link ThreeDigits}
      * @return a {@link String}
      */
-    public String processQuintillion(Optional<ThreeDigits> object) {
+    public String processQuintillion(@NotNull ThreeDigits object) {
         return value("quintillion", object);
     }
 }

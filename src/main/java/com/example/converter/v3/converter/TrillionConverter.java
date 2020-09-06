@@ -10,12 +10,12 @@ public class TrillionConverter extends AbstractConverter implements ThreeDigitsC
     }
 
     @Override
-    public boolean check(ThreeDigitsCollection collection) {
+    public boolean test(ThreeDigitsCollection collection) {
         return collection.trillions().isPresent();
     }
 
     @Override
-    public String convert(ThreeDigitsCollection collection) {
-        return templateEngine.processTrillion(collection.trillions());
+    public String apply(ThreeDigitsCollection collection) {
+        return templateEngine.processTrillion(collection.trillions().get());
     }
 }

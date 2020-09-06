@@ -10,7 +10,7 @@ interface WordResponse {
 
     String getValue();
 
-    static WordResponse zeroWordResponse() {
-        return ImmutableWordResponse.builder().value("zero").build();
+    default String getVersion() {
+        return "V1";
     }
 }
