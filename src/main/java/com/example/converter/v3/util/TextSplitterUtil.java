@@ -1,4 +1,6 @@
-package com.example.converter.v3;
+package com.example.converter.v3.util;
+
+import com.example.converter.v3.EnglishNumber;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,9 +8,9 @@ import java.util.List;
 /**
  * Utility class for splitting text into a bunch of {@link String}s
  */
-public class TextSplitter {
+public class TextSplitterUtil {
 
-    private TextSplitter() {
+    private TextSplitterUtil() {
         throw new IllegalStateException("Utility class");
     }
 

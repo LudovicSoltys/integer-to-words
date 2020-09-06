@@ -4,8 +4,6 @@ import com.example.converter.v3.converter.*;
 import com.example.converter.v3.util.templating.EnglishTemplateEngine;
 import com.google.common.collect.ImmutableList;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.support.ResourceBundleMessageSource;
@@ -14,13 +12,8 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import java.util.List;
 import java.util.function.Supplier;
 
-@SpringBootApplication
 @EnableWebMvc
 public class AppV3WebConfig {
-
-    public static void main(String[] args) {
-        SpringApplication.run(AppV3WebConfig.class, args);
-    }
 
     @Bean
     public TranslationController translationController(@Autowired TranslationService translationService) {

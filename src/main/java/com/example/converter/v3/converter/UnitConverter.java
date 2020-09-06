@@ -3,6 +3,9 @@ package com.example.converter.v3.converter;
 import com.example.converter.v3.ThreeDigitsCollection;
 import com.example.converter.v3.util.templating.EnglishTemplateEngine;
 
+/**
+ * Stratégie pour convertir l'élément des unités d'une {@link ThreeDigitsCollection} en chaine de caractères
+ */
 public class UnitConverter extends AbstractConverter implements ThreeDigitsCollectionConverter {
 
     public UnitConverter(EnglishTemplateEngine templateEngine) {
@@ -17,6 +20,6 @@ public class UnitConverter extends AbstractConverter implements ThreeDigitsColle
     @Override
     public String apply(ThreeDigitsCollection collection) {
 
-        return templateEngine.processUnit(collection.units().get());
+        return templateEngine.processUnit(collection.units().orElseThrow(IllegalArgumentException::new));
     }
 }

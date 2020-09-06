@@ -1,4 +1,4 @@
-package com.example.converter.v2;
+package com.example.converter.shared;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;

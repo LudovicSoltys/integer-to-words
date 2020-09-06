@@ -3,6 +3,9 @@ package com.example.converter.v3.converter;
 import com.example.converter.v3.ThreeDigitsCollection;
 import com.example.converter.v3.util.templating.EnglishTemplateEngine;
 
+/**
+ * Stratégie pour convertir l'élément des milliards d'une {@link ThreeDigitsCollection} en chaine de caractères
+ */
 public class MilliardConverter extends AbstractConverter implements ThreeDigitsCollectionConverter {
 
     public MilliardConverter(EnglishTemplateEngine templateEngine) {
@@ -16,6 +19,7 @@ public class MilliardConverter extends AbstractConverter implements ThreeDigitsC
 
     @Override
     public String apply(ThreeDigitsCollection collection) {
-        return templateEngine.processMilliard(collection.milliards().get());
+
+        return templateEngine.processMilliard(collection.milliards().orElseThrow(IllegalArgumentException::new));
     }
 }

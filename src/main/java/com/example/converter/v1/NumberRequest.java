@@ -13,18 +13,18 @@ class NumberRequest {
 
     private final ThreeDigits units;
 
-    private final Integer max = 999999999;
+    private static final Integer MAX = 999999999;
 
-    private final Integer min = 0;
+    private static final Integer MIN = 0;
 
     NumberRequest(Integer value) {
 
         if (value == null) {
-            throw new IllegalArgumentException("Expect only numbers between " + min + " and " + max + ". Actual value is null");
+            throw new IllegalArgumentException("Expect only numbers between " + MIN + " and " + MAX + ". Actual value is null");
         }
 
-        if (value > max || value < min) {
-            throw new IllegalArgumentException("Expect only numbers between " + min + " and " + max + ". Actual value is " + value);
+        if (value > MAX || value < MIN) {
+            throw new IllegalArgumentException("Expect only numbers between " + MIN + " and " + MAX + ". Actual value is " + value);
         }
 
         this.value = value;

@@ -1,5 +1,7 @@
-package com.example.converter.v3;
+package com.example.converter.v3.util;
 
+import com.example.converter.v3.EnglishNumber;
+import com.example.converter.v3.util.TextSplitterUtil;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -10,7 +12,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Stream;
 
-class TextSplitterSplitTest {
+class TextSplitterUtilSplitTest {
 
     @ParameterizedTest
     @MethodSource("data")
@@ -20,7 +22,7 @@ class TextSplitterSplitTest {
         EnglishNumber input = EnglishNumber.of(value);
 
         // when
-        List<String> result = TextSplitter.split(input, count);
+        List<String> result = TextSplitterUtil.split(input, count);
 
         // then
         Assertions.assertThat(result)

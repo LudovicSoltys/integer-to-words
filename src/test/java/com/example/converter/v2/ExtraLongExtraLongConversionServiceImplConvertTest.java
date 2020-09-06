@@ -7,10 +7,10 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
 
-/** @see ConversionServiceImpl#convertNumber(String)  */
-class ConversionServiceImplConvertTest {
+/** @see ExtraLongExtraLongConversionServiceImpl#convertNumber(String)  */
+class ExtraLongExtraLongConversionServiceImplConvertTest {
 
-    private final ConversionServiceImpl subject = new ConversionServiceImpl();
+    private final ExtraLongExtraLongConversionServiceImpl subject = new ExtraLongExtraLongConversionServiceImpl();
 
     @ParameterizedTest
     @MethodSource("converterShouldTranslateIntegerIntoString")

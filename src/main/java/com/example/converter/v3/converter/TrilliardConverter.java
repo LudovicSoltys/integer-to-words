@@ -3,6 +3,9 @@ package com.example.converter.v3.converter;
 import com.example.converter.v3.ThreeDigitsCollection;
 import com.example.converter.v3.util.templating.EnglishTemplateEngine;
 
+/**
+ * Stratégie pour convertir l'élément des trilliards d'une {@link ThreeDigitsCollection} en chaine de caractères
+ */
 public class TrilliardConverter extends AbstractConverter implements ThreeDigitsCollectionConverter {
 
     public TrilliardConverter(EnglishTemplateEngine templateEngine) {
@@ -16,6 +19,7 @@ public class TrilliardConverter extends AbstractConverter implements ThreeDigits
 
     @Override
     public String apply(ThreeDigitsCollection collection) {
-        return templateEngine.processTrilliard(collection.trilliards().get());
+
+        return templateEngine.processTrilliard(collection.trilliards().orElseThrow(IllegalArgumentException::new));
     }
 }

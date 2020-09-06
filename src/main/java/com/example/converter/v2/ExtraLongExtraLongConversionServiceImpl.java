@@ -7,10 +7,9 @@ import org.springframework.stereotype.Service;
 import java.util.stream.Collectors;
 
 /**
- * default implementation for {@link ConversionService}
+ * default implementation for {@link ExtraLongConversionService}
  */
-@Service
-public class ConversionServiceImpl implements ConversionService {
+public class ExtraLongExtraLongConversionServiceImpl implements ExtraLongConversionService {
 
     @Override
     public WordResponse convertNumber(String input) {

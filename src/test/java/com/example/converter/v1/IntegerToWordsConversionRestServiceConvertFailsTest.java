@@ -19,7 +19,7 @@ class IntegerToWordsConversionRestServiceConvertFailsTest {
     private MockMvc mockMvc;
 
     @Test
-    public void shouldDoSomething() throws Exception {
+    void shouldThrowBadRequestWhenInputIsNotValid() throws Exception {
 
         // given
         Integer input = -245;

@@ -8,7 +8,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 import java.util.stream.Stream;
 
 /** @see ConversionServiceImpl#convertNumber(NumberRequest)  */
-class ConversionServiceImplConvertTest {
+class ExtraLongExtraLongConversionServiceImplConvertTest {
 
     private final ConversionServiceImpl subject = new ConversionServiceImpl();
 

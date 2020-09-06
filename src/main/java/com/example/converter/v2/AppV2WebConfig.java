@@ -1,14 +1,19 @@
 package com.example.converter.v2;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
-@SpringBootApplication
 @EnableWebMvc
 public class AppV2WebConfig {
 
-    public static void main(String[] args) {
-        SpringApplication.run(AppV2WebConfig.class, args);
+    @Bean
+    public ExtraLongConversionService extraLongConversionService() {
+        return new ExtraLongExtraLongConversionServiceImpl();
+    }
+
+    @Bean
+    public ExtraLongNumberRestService extraLongNumberRestService(@Autowired ExtraLongConversionService service) {
+        return new ExtraLongNumberRestService(service);
     }
 }

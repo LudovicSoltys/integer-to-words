@@ -7,6 +7,12 @@ import java.text.DecimalFormat;
  */
 class DigitsExtractUtil {
 
+    private static final String ZERO_PATTERN = "000000000";
+
+    private DigitsExtractUtil() {
+        throw new IllegalStateException("Utility class");
+    }
+
     /**
      *
      * @param input an Integer
@@ -14,7 +20,7 @@ class DigitsExtractUtil {
      */
     static ThreeDigits millions(Integer input) {
 
-        String number = new DecimalFormat("000000000").format(input);
+        String number = new DecimalFormat(ZERO_PATTERN).format(input);
         return new ThreeDigits(Integer.parseInt(number.substring(0, 3)));
     }
 
@@ -25,7 +31,7 @@ class DigitsExtractUtil {
      */
     static ThreeDigits thousands(Integer input) {
 
-        String number = new DecimalFormat("000000000").format(input);
+        String number = new DecimalFormat(ZERO_PATTERN).format(input);
         return new ThreeDigits(Integer.parseInt(number.substring(3, 6)));
     }
 
@@ -36,7 +42,7 @@ class DigitsExtractUtil {
      */
     static ThreeDigits units(Integer input) {
 
-        String number = new DecimalFormat("000000000").format(input);
+        String number = new DecimalFormat(ZERO_PATTERN).format(input);
         return new ThreeDigits(Integer.parseInt(number.substring(6, 9)));
     }
 }

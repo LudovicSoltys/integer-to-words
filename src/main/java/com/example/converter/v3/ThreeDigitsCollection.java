@@ -1,5 +1,7 @@
 package com.example.converter.v3;
 
+import com.example.converter.v3.util.TextSplitterUtil;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -41,7 +43,7 @@ public interface ThreeDigitsCollection {
      */
     static ThreeDigitsCollection instance(EnglishNumber number) {
 
-        List<String> list = TextSplitter.split(number, 3);
+        List<String> list = TextSplitterUtil.split(number, 3);
 
         return new ThreeDigitsCollection.EnglishThreeDigitsCollection(list, !number.isZero(), number.isLowerThanZero());
     }
