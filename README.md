@@ -11,6 +11,22 @@ Voici quelques exemples :
 "245" est converti en "two hundred forty-five"  
 "75" est converti en "seventy-five"  
 
+# Solution
+L'application contient 3 solutions possibles :
+- V1 : version basique avec des nombres compris entre 0 et 999999999
+- V2 : version gérant les nombres longs (jusqu'aux quintillions) et négatifs
+- V3 : version qui gère les nombres longs et négatifs, mais propose l'utilisation des MessagesSources pour la traduction 
+des nombres composés de 3 caractères ou moins (0 à 999) en des mots 
+
+La distinction de la version se fait via l'URL :
+```
+http://localhost:8080/api/v1/convert/4123
+
+http://localhost:8080/api/v2/convert/4123
+
+http://localhost:8080/api/v3/convert/4123
+```
+
 # Pré-requis
 L'application nécessite d'utiliser **Maven** pour être compilée et buildée.  
 
@@ -60,13 +76,4 @@ On obtient alors le résultat suivant :
 value: "four thousand one hundred twenty-three"
 }
 ```
-
-# Architecture logicielle
-L'application prend la forme d'un webservice et est découpée en différents éléments :
-- à la racine : IntegersToWordsApplication, bootstrap de l'application
-- package exposed : le webservice
-- package domain : les différents éléments du domaine
-- package service : le code métier
-- package binding : pour la gestion des contraintes et des erreurs 
-
 
