@@ -10,7 +10,7 @@ import java.util.Optional;
  */
 public interface ThreeDigitsCollection {
 
-    Optional<ThreeDigits> quintillions();
+    Optional<ThreeDigits> quadrillions();
 
     Optional<ThreeDigits> trilliards();
 
@@ -79,7 +79,7 @@ public interface ThreeDigitsCollection {
         }
 
         @Override
-        public Optional<ThreeDigits> quintillions() {
+        public Optional<ThreeDigits> quadrillions() {
             return value(8);
         }
 

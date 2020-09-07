@@ -6,12 +6,14 @@ import com.google.common.collect.ImmutableList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import java.util.List;
 import java.util.function.Supplier;
 
+@Configuration
 @EnableWebMvc
 public class AppV3WebConfig {
 
@@ -53,7 +55,7 @@ public class AppV3WebConfig {
                 .add(new BilliardConverter(templateEngine)) // 10^15
                 .add(new TrillionConverter(templateEngine)) // 10^18
                 .add(new TrilliardConverter(templateEngine)) // 10^21
-                .add(new QuintillionConverter(templateEngine)) // 10^24
+                .add(new QuadrillionConverter(templateEngine)) // 10^24
                 .build();
     }
 

@@ -28,7 +28,7 @@ public class ExtraLongExtraLongConversionServiceImpl implements ExtraLongConvers
                 .collect(Collectors.joining(" "));
 
         return ImmutableWordResponse.builder()
-                .value(number.isLowerThanZero() ? "minus " : "" + output.trim())
+                .value((number.isLowerThanZero() ? "minus " : "") + output.trim())
                 .build();
     }
 }

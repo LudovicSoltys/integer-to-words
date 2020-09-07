@@ -127,7 +127,7 @@ public class EnglishTemplateEngine {
      * @param object an {@link Optional} of a {@link ThreeDigits}
      * @return a {@link String}
      */
-    public String processQuintillion(@NotNull ThreeDigits object) {
-        return value("quintillion", object);
+    public String processQuadrillion(@NotNull ThreeDigits object) {
+        return value("quadrillion", object);
     }
 }

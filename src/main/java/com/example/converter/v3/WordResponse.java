@@ -11,6 +11,6 @@ interface WordResponse {
     String getValue();
 
     default String getVersion() {
-        return "V1";
+        return "V3";
     }
 }
