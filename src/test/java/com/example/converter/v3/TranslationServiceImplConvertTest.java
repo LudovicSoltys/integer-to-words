@@ -25,7 +25,7 @@ class TranslationServiceImplConvertTest {
         // given
 
         // when
-        WordResponse result = translationService.translateNumber(EnglishNumber.of(value));
+        Maybe<String> result = translationService.translateNumber(EnglishNumber.of(value));
 
         // then
         Assertions.assertThat(result.getValue()).isEqualTo(expected);

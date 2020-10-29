@@ -11,7 +11,7 @@ import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import java.util.List;
-import java.util.function.Supplier;
+import java.util.function.Function;
 
 @Configuration
 @EnableWebMvc
@@ -35,9 +35,9 @@ public class AppV3WebConfig {
 
     @Bean
     public TranslationService translationService(@Autowired MessageSource messageSource) {
-
         EnglishTemplateEngine templateEngine = new EnglishTemplateEngine(messageSource);
-        return new TranslationServiceImpl(nonZeroConverterSupplier(templateEngine), zeroConverterSupplier(templateEngine));
+        Function<ThreeDigitsCollection, String> converter = new NonZeroAggregateConverter(converters(templateEngine));
+        return new TranslationServiceImpl(templateEngine, converter);
     }
 
     /**
@@ -57,14 +57,5 @@ public class AppV3WebConfig {
                 .add(new TrilliardConverter(templateEngine)) // 10^21
                 .add(new QuadrillionConverter(templateEngine)) // 10^24
                 .build();
-    }
-
-    private Supplier<ThreeDigitsCollectionConverter> nonZeroConverterSupplier(EnglishTemplateEngine templateEngine) {
-      return () -> new NonZeroEnglishNumberConverter(converters(templateEngine), new NegativeSignConverter(templateEngine));
-    }
-
-    private Supplier<ThreeDigitsCollectionConverter> zeroConverterSupplier(EnglishTemplateEngine templateEngine) {
-
-        return () -> new ZeroEnglishNumberConverter(templateEngine);
     }
 }

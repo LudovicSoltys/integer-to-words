@@ -1,26 +1,19 @@
-package com.example.converter.v3.converter;
+package com.example.converter.v3;
 
-import com.example.converter.v3.ThreeDigitsCollection;
+import com.example.converter.v3.converter.ThreeDigitsCollectionConverter;
 
 import java.util.List;
+import java.util.function.Function;
 
 /**
  * a converter for non-zero numbers
  */
-public class NonZeroEnglishNumberConverter implements ThreeDigitsCollectionConverter {
+public class NonZeroAggregateConverter implements Function<ThreeDigitsCollection, String> {
 
     private final List<ThreeDigitsCollectionConverter> converters;
 
-    private final NegativeSignConverter negativeSignConverter;
-
-    public NonZeroEnglishNumberConverter(List<ThreeDigitsCollectionConverter> converters, NegativeSignConverter negativeSignConverter) {
+    public NonZeroAggregateConverter(List<ThreeDigitsCollectionConverter> converters) {
         this.converters = converters;
-        this.negativeSignConverter = negativeSignConverter;
-    }
-
-    @Override
-    public boolean test(ThreeDigitsCollection collection) {
-        return collection.isNotZero();
     }
 
     @Override
@@ -32,10 +25,6 @@ public class NonZeroEnglishNumberConverter implements ThreeDigitsCollectionConve
                 // Ex : if there is no million-type, there is no need to check for milliard-, billion-, and so on
                 .takeWhile(bufferDecorator -> bufferDecorator.test(collection))
                 .forEach(bufferDecorator -> output.insert(0, " " + bufferDecorator.apply(collection)));
-
-        if (negativeSignConverter.test(collection)) {
-            output.insert(0,negativeSignConverter.apply(collection));
-        }
 
         return output.toString().trim();
     }

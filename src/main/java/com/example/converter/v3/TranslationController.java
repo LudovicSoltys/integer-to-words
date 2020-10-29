@@ -19,7 +19,7 @@ public class TranslationController {
     }
 
     @GetMapping(value = "/convert/{value}", produces = "application/json")
-    public WordResponse convert(@PathVariable String value) {
+    public Maybe<String> convert(@PathVariable String value) {
 
         return translationService.translateNumber(EnglishNumber.of(value));
     }

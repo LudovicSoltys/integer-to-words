@@ -1,37 +1,32 @@
 package com.example.converter.v3;
 
-import com.example.converter.v3.converter.ThreeDigitsCollectionConverter;
+import com.example.converter.v3.util.templating.EnglishTemplateEngine;
 
-import java.util.function.Supplier;
+import java.util.function.Function;
 
 /**
  * default implementation of {@link TranslationService}
  */
 public class TranslationServiceImpl implements TranslationService {
 
-    private final Supplier<ThreeDigitsCollectionConverter> nonZeroConverterSupplier;
+    private final EnglishTemplateEngine templateEngine;
 
-    private final Supplier<ThreeDigitsCollectionConverter> zeroConverterSupplier;
+    private final Function<ThreeDigitsCollection, String> converter;
 
-    public TranslationServiceImpl(Supplier<ThreeDigitsCollectionConverter> nonZeroConverterSupplier,
-                                  Supplier<ThreeDigitsCollectionConverter> zeroConverterSupplier) {
-        this.nonZeroConverterSupplier = nonZeroConverterSupplier;
-        this.zeroConverterSupplier = zeroConverterSupplier;
+    public TranslationServiceImpl(EnglishTemplateEngine templateEngine, Function<ThreeDigitsCollection, String> converter) {
+        this.templateEngine = templateEngine;
+        this.converter = converter;
     }
 
     @Override
-    public WordResponse translateNumber(EnglishNumber number) {
+    public Maybe<String> translateNumber(EnglishNumber value) {
 
-        ThreeDigitsCollection collection = ThreeDigitsCollection.instance(number);
-        String output = get(collection).apply(collection);
-
-        return ImmutableWordResponse.builder()
-                .value(output)
-                .build();
-    }
-
-    private ThreeDigitsCollectionConverter get(ThreeDigitsCollection collection) {
-
-        return collection.isNotZero() ? this.nonZeroConverterSupplier.get() : this.zeroConverterSupplier.get();
+        return value
+                .map(
+                        number -> ThreeDigitsCollection.instance(number).map(converter),
+                        stringOptional -> templateEngine.processNegativeSign() + " " + stringOptional
+                )
+                .map(Maybe::success)
+                .orElseGet(() -> Maybe.success(templateEngine.processZero()));
     }
 }

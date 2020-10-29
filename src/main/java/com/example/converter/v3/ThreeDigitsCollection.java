@@ -4,11 +4,24 @@ import com.example.converter.v3.util.TextSplitterUtil;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Function;
 
 /**
  * behaviour of collections of {@link ThreeDigits}
  */
 public interface ThreeDigitsCollection {
+
+    /**
+     *
+     * @param number a {@link EnglishNumber}
+     * @return an instance of {@link ThreeDigitsCollection}
+     */
+    static ThreeDigitsCollection instance(EnglishNumber number) {
+
+        List<String> list = TextSplitterUtil.split(number, 3);
+
+        return new EnglishThreeDigitsCollection(list);
+    }
 
     Optional<ThreeDigits> quadrillions();
 
@@ -28,24 +41,8 @@ public interface ThreeDigitsCollection {
 
     Optional<ThreeDigits> units();
 
-    boolean isNegative();
-
-    boolean isNotZero();
-
-    default boolean isZero() {
-        return !isNotZero();
-    }
-
-    /**
-     *
-     * @param number a {@link EnglishNumber}
-     * @return an instance of {@link ThreeDigitsCollection}
-     */
-    static ThreeDigitsCollection instance(EnglishNumber number) {
-
-        List<String> list = TextSplitterUtil.split(number, 3);
-
-        return new ThreeDigitsCollection.EnglishThreeDigitsCollection(list, !number.isZero(), number.isLowerThanZero());
+    default <R> R map(Function<ThreeDigitsCollection, R> function) {
+        return function.apply(this);
     }
 
     /**
@@ -57,25 +54,9 @@ public interface ThreeDigitsCollection {
 
         private final int size;
 
-        private final boolean isNotZero;
-
-        private final boolean isNegative;
-
-        public EnglishThreeDigitsCollection(List<String> texts, boolean isNotZero, boolean isNegative) {
+        public EnglishThreeDigitsCollection(List<String> texts) {
             this.numbers = texts;
             this.size = texts.size();
-            this.isNegative = isNegative;
-            this.isNotZero = isNotZero;
-        }
-
-        @Override
-        public boolean isNotZero() {
-            return isNotZero;
-        }
-
-        @Override
-        public boolean isNegative() {
-            return isNegative;
         }
 
         @Override
